@@ -15,22 +15,28 @@ public class CarMain {
         int carType = inputView.getInt(INPUT_CAR_TYPE);
         boolean isModeOn = inputView.getBoolean(INPUT_MODE);
         int weatherCondition = inputView.getInt(INPUT_WEATHER_CONDITION);
-        Car car = null;
+        Car car = selectCarImpl(carType, isModeOn);
+        int totalMovement = car.totalMovement(passengers);
+        int totalDistance = car.totalDistance(destination, totalMovement);
+        double totalFuel = car.totalFuel(totalDistance);
+        int totalRefuel = car.countRefuel(totalFuel);
+        int totalCost = car.totalCost(totalFuel);
+        int totalTravelTime = car.totalTravelTime(destination, totalMovement, weatherCondition);
+        outputView.printResult(car.name, totalCost, totalRefuel, totalTravelTime);
+    }
+
+    private static Car selectCarImpl(int carType, boolean isModeOn) {
         switch (carType) {
             case 1: // 스포츠카
-//                car = new SportsCar(isModeOn);
-                break;
+//                return new SportsCar(isModeOn);
             case 2: // 승용차
-                car = new Sedan(isModeOn);
-                break;
+                return new Sedan(isModeOn);
             case 3: // 버스
-//                car = new Bus(isModeOn);
-                break;
+//                return new Bus(isModeOn);
             default:
                 System.out.println("잘못된 차량 선택입니다.");
-                return;
+                throw new IllegalArgumentException("Invalid car type selected.");
         }
-
     }
 
 }

@@ -41,18 +41,19 @@ public abstract class Car {
     }
 
     public double totalFuel(int totalDistance) {
-        return  (double) totalDistance / this.fuelEfficiency;
+        return (double) totalDistance / this.fuelEfficiency;
     }
 
     public int countRefuel(double totalFuel) {
-        return (int) Math.ceil( totalFuel / this.fuelCapacity);
+        return (int) Math.ceil(totalFuel / this.fuelCapacity);
     }
-    public double totalCost(double totalFuel) {
-        return  totalFuel * FUEL_PRICE;
+
+    public int totalCost(double totalFuel) {
+        return (int) Math.ceil(totalFuel * FUEL_PRICE);
     }
 
     public int totalTravelTime(int distance, int totalMovement, int weatherCondition) {
-        return (int) Math.ceil((distance / velocity) * totalMovement * selectWeatherCondition(weatherCondition))*60;
+        return (int) Math.ceil(((double) distance / velocity) * totalMovement * selectWeatherCondition(weatherCondition)) * 60;
     }
 
     private double selectWeatherCondition(int weatherCondition) {
