@@ -51,8 +51,8 @@ public abstract class Car {
         return  totalFuel * FUEL_PRICE;
     }
 
-    public double totalTravelTime(int distance, int totalMovement, int weatherCondition) {
-        return (double) (distance / velocity) * totalMovement * selectWeatherCondition(weatherCondition);
+    public int totalTravelTime(int distance, int totalMovement, int weatherCondition) {
+        return (int) Math.ceil((distance / velocity) * totalMovement * selectWeatherCondition(weatherCondition))*60;
     }
 
     private double selectWeatherCondition(int weatherCondition) {
