@@ -40,14 +40,14 @@ public abstract class Car {
         return distance * totalMovement;
     }
 
-    public int totalFuel(int totalDistance) {
-        return  totalDistance / this.fuelEfficiency;
+    public double totalFuel(int totalDistance) {
+        return  (double) totalDistance / this.fuelEfficiency;
     }
 
-    public int countRefuel(int totalFuel) {
-        return (int) Math.ceil((double) totalFuel / this.fuelCapacity);
+    public int countRefuel(double totalFuel) {
+        return (int) Math.ceil( totalFuel / this.fuelCapacity);
     }
-    public double totalCost(int totalFuel) {
+    public double totalCost(double totalFuel) {
         return  totalFuel * FUEL_PRICE;
     }
 
