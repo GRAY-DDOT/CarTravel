@@ -53,7 +53,7 @@ public abstract class Car {
     }
 
     public int totalTravelTime(int distance, int totalMovement, int weatherCondition) {
-        return (int) Math.ceil(((double) distance / velocity) * totalMovement * selectWeatherCondition(weatherCondition)) * 60;
+        return (int) Math.ceil(((double) distance / velocity) * totalMovement * selectWeatherCondition(weatherCondition)* 60);
     }
 
     private double selectWeatherCondition(int weatherCondition) {
