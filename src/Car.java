@@ -20,30 +20,53 @@ public abstract class Car {
     protected int seatsNumber; // 좌석 수
     protected boolean isModeOn; // 모드 상태 (on/off)
     protected String name; // 차량 이름
+    final protected int FUEL_PRICE = 2000; // 연료 가격 (단위: 원)
 
-    public Car(int velocity, int fuelEfficiency, int fuelCapacity, int seatsNumber, String name) {
+    public Car(int velocity, int fuelEfficiency, int fuelCapacity, int seatsNumber) {
         this.velocity = velocity;
         this.fuelEfficiency = fuelEfficiency;
         this.fuelCapacity = fuelCapacity;
         this.seatsNumber = seatsNumber;
-        this.name = name;
     }
 
 
-
-    public int totalMovement(int distance) {
-        return distance / fuelEfficiency;
+    // ceil(승객 수 / 좌석 수)
+    public int totalMovement(int passengers) {
+        return (int) Math.ceil((double) passengers / this.seatsNumber);
     }
 
-    public int totalRefuel(int distance) {
-        return (distance / fuelEfficiency + fuelCapacity - 1) / fuelCapacity;
+    //거리 × 횟수
+    public int totalDistance(int distance, int totalMovement) {
+        return distance * totalMovement;
     }
 
-    public double totalCost(int distance, double fuelPrice) {
-        return (distance / fuelEfficiency) * fuelPrice;
+    public int totalFuel(int totalDistance) {
+        return  totalDistance / this.fuelEfficiency;
     }
 
-    public double totalTravelTime(int distance) {
-        return (double) distance / velocity;
+    public int countRefuel(int totalFuel) {
+        return (int) Math.ceil((double) totalFuel / this.fuelCapacity);
     }
+    public double totalCost(int totalFuel) {
+        return  totalFuel * FUEL_PRICE;
+    }
+
+    public double totalTravelTime(int distance, int totalMovement, int weatherCondition) {
+        return (double) (distance / velocity) * totalMovement * selectWeatherCondition(weatherCondition);
+    }
+
+    private double selectWeatherCondition(int weatherCondition) {
+        switch (weatherCondition) {
+            case 1: // 맑음
+                return 1.0;
+            case 2: // 비
+                return 1.2;
+            case 3: // 눈
+                return 1.4;
+            default: // 예외
+                return -1.0;
+        }
+    }
+
+    public abstract void setMode(boolean isOn); // 차량별 부과 기능 on/off
 }
