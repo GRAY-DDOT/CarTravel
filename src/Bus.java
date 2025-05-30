@@ -1,7 +1,5 @@
 import mode.Aircon;
 import mode.AutoDrive;
-import mode.Music;
-import view.OutputView;
 
 public class Bus extends Car implements Aircon, AutoDrive {
 //    OutputView outputView = new OutputView();
@@ -30,22 +28,32 @@ public class Bus extends Car implements Aircon, AutoDrive {
     //    public Car(int velocity, int fuelEfficiency, int fuelCapacity, int seatsNumber) {
     public Bus(String name) {
         // 고정값을 부모 생성자에 전달
-        super(150, 12, fuelCapacity, 20);
-        this.name =name;
+        super(velocity, fuelEfficiency, fuelCapacity, seatsNumber);
+        this.name = name;
     }
 
     @Override
     public void setMode(boolean isOn) {
-        if(isOn) fuelCapacity += 30;
+        if (isOn) fuelCapacity += 30;
         this.isModeOn = isOn;
     }
 
+
     @Override
-    public String getModeMessageWhenModeOn(String carName, boolean isOn) {
-        return Aircon.super.getModeMessageWhenModeOn(carName, isOn)
-                + "\n"
-                + AutoDrive.super.getModeMessageWhenModeOn(carName, isOn);
+    public void airconOn(boolean isOn) {
+        if (isOn) {
+            System.out.println(this.name + ": 에어컨 ON");
+        } else {
+            System.out.println(this.name + ": 에어컨 OFF");
+        }
     }
+
+    @Override
+    public void autoDriveOn(boolean isOn) {
+        if (isOn) System.out.println(this.name + ": 자율주행 ON");
+        else System.out.println(this.name + ": 자율주행 OFF");
+    }
+
 
 //    void viewBus(){
 //        int tMovement = totalMovement(passenger);

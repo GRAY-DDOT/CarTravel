@@ -38,10 +38,8 @@ public class Sedan extends Car implements Aircon, Music {
     public void airconOn(boolean isOn) {
         if (isOn) {
             System.out.println(this.name + ": 에어컨 ON");
-            this.fuelEfficiency -= 2; // 에어컨 켜면 연비 감소
         } else {
             System.out.println(this.name + ": 에어컨 OFF");
-            this.fuelEfficiency += 2; // 에어컨 끄면 연비 복구
         }
     }
 

@@ -60,7 +60,7 @@ public class CarMain {
     }
 
     private static Car selectCarImpl(int carType, boolean isModeOn) {
-        Car car = null;
+        Car car;
         switch (carType) {
             case 1: // 스포츠카
                 car = new SportsCar();
@@ -70,7 +70,9 @@ public class CarMain {
                 car = new Sedan(isModeOn);
                 return car;
             case 3: // 버스
-//                return new Bus(isModeOn);
+                car = new Bus("타요");
+                car.setMode(isModeOn);
+                return car;
             default:
                 System.out.println("잘못된 차량 선택입니다.");
                 throw new IllegalArgumentException("Invalid car type selected.");
