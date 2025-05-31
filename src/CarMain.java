@@ -2,12 +2,9 @@ import constansts.Destination;
 import view.InputView;
 import view.OutputView;
 
+import static constansts.InputViewMessage.*;
+
 public class CarMain {
-    final static String INPUT_DESTINATION = "이동 지역 선택 [1]부산 [2]대전 [3]강릉 [4]광주 : ";
-    final static String INPUT_PASSENGERS = "이동할 승객 수 입력 : ";
-    final static String INPUT_CAR_TYPE = "이동할 차량 선택 [1]스포츠카 [2]승용차 [3]버스 : ";
-    final static String INPUT_MODE = "부가 기능 [1]ON [2]OFF : ";
-    final static String INPUT_WEATHER_CONDITION = "날씨 [1]맑음 [2]비 [3]눈 : ";
     public static void main(String[] args) {
         InputView inputView = new InputView();
         OutputView outputView = new OutputView();
@@ -18,14 +15,14 @@ public class CarMain {
         boolean isModeOn = inputView.getBoolean(INPUT_MODE);
         int weatherCondition = inputView.getInt(INPUT_WEATHER_CONDITION);
 
-        Car car = selectCarImpl(carType, isModeOn);
+        Car car = selectCarImpl(result.carType(), result.isModeOn());
 
-        int totalMovement = car.totalMovement(passengers);
-        int totalDistance = car.totalDistance(destination, totalMovement);
+        int totalMovement = car.totalMovement(result.passengers());
+        int totalDistance = car.totalDistance(result.destination(), totalMovement);
         double totalFuel = car.totalFuel(totalDistance);
         int totalRefuel = car.countRefuel(totalFuel);
         int totalCost = car.totalCost(totalFuel);
-        int totalTravelTime = car.totalTravelTime(destination, totalMovement, weatherCondition);
+        int totalTravelTime = car.totalTravelTime(result.destination(), totalMovement, result.weatherCondition());
 
         outputView.printResult(car.name, totalCost, totalRefuel, totalTravelTime);
     }
