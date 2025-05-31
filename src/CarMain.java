@@ -1,15 +1,15 @@
-import constansts.Destination;
+import view.CarInputDTO;
+import view.CarInputHandler;
 import view.InputView;
 import view.OutputView;
-
-import static constansts.InputViewMessage.*;
 
 public class CarMain {
     public static void main(String[] args) {
         InputView inputView = new InputView();
         OutputView outputView = new OutputView();
 
-        CarInputDTO inputDTO = getCarInputDTO(inputView);
+        CarInputHandler inputHandler = new CarInputHandler(inputView);
+        CarInputDTO inputDTO = inputHandler.collectInput();
 
         Car car = selectCarImpl(inputDTO.carType(), inputDTO.isModeOn());
 
@@ -22,19 +22,6 @@ public class CarMain {
 
         outputView.printResult(car.name, totalCost, totalRefuel, totalTravelTime);
     }
-
-    private static CarInputDTO getCarInputDTO(InputView inputView) {
-        int destination = Destination.getDistanceById(inputView.getInt(INPUT_DESTINATION_MSG));
-        int passengers = inputView.getInt(INPUT_PASSENGERS_MSG);
-        int carType = inputView.getInt(INPUT_CAR_TYPE_MSG);
-        boolean isModeOn = inputView.getBoolean(INPUT_MODE_MSG);
-        int weatherCondition = inputView.getInt(INPUT_WEATHER_CONDITION_MSG);
-
-        CarInputDTO result = new CarInputDTO(destination, passengers, carType, isModeOn, weatherCondition);
-        return result;
-    }
-
-
 
     private static Car selectCarImpl(int carType, boolean isModeOn) {
         Car car;
