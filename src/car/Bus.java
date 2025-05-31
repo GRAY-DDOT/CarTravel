@@ -1,3 +1,5 @@
+package car;
+
 import mode.Aircon;
 import mode.AutoDrive;
 
@@ -25,7 +27,7 @@ public class Bus extends Car implements Aircon, AutoDrive {
     private static int fuelCapacity = 45;    //
     private static int seatsNumber = 20;
 
-    //    public Car(int velocity, int fuelEfficiency, int fuelCapacity, int seatsNumber) {
+    //    public car.Car(int velocity, int fuelEfficiency, int fuelCapacity, int seatsNumber) {
     public Bus(String name) {
         // 고정값을 부모 생성자에 전달
         super(velocity, fuelEfficiency, fuelCapacity, seatsNumber);
@@ -58,7 +60,7 @@ public class Bus extends Car implements Aircon, AutoDrive {
 //    void viewBus(){
 //        int tMovement = totalMovement(passenger);
 //
-//        outputView.printResult(name, Bus.totalCost, totalRefuel, totalTravelTime);
+//        outputView.printResult(name, car.Bus.totalCost, totalRefuel, totalTravelTime);
 //        //String carName,int totalCost, int totalRefuel, double totalTravelTime
 //    }
 

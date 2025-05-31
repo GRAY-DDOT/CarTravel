@@ -1,3 +1,5 @@
+package car;
+
 import constansts.WeatherCondition;
 
 /*
@@ -62,6 +64,9 @@ public abstract class Car {
                 * HOUR_TO_MINUTE_CONVERT_FACTOR);
     }
 
+    public String getName() {
+        return name;
+    }
 
     public abstract void setMode(boolean isOn); // 차량별 부과 기능 on/off
 }

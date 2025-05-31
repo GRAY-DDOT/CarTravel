@@ -1,3 +1,7 @@
+import car.Bus;
+import car.Car;
+import car.Sedan;
+import car.SportsCar;
 import view.CarInputDTO;
 import view.CarInputHandler;
 import view.InputView;
@@ -20,7 +24,7 @@ public class CarMain {
         int totalCost = car.totalCost(totalFuel);
         int totalTravelTime = car.totalTravelTime(inputDTO.destination(), totalMovement, inputDTO.weatherCondition());
 
-        outputView.printResult(car.name, totalCost, totalRefuel, totalTravelTime);
+        outputView.printResult(car.getName(), totalCost, totalRefuel, totalTravelTime);
     }
 
     private static Car selectCarImpl(int carType, boolean isModeOn) {
