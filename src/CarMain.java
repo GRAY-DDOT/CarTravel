@@ -19,18 +19,11 @@ public class CarMain {
     final static String INPUT_WEATHER_CONDITION = "날씨 [1]맑음 [2]비 [3]눈 : ";
     public static void main(String[] args) {
         InputView inputView = new InputView();
-
-        int[] weatherConditions = {
-                0, // 0 index is unused
-                1, // 맑음
-                2, // 비
-                3  // 눈
-        };
         int destination = Destination.getDistanceById(inputView.getInt(INPUT_DESTINATION));
         int passengers = inputView.getInt(INPUT_PASSENGERS);
         int carType = inputView.getInt(INPUT_CAR_TYPE);
         boolean isModeOn = inputView.getBoolean(INPUT_MODE);
-        int weatherCondition = weatherConditions[inputView.getInt(INPUT_WEATHER_CONDITION)];
+        int weatherCondition = inputView.getInt(INPUT_WEATHER_CONDITION);
 
         System.out.println();
 

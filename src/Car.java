@@ -1,3 +1,5 @@
+import constansts.WeatherCondition;
+
 /*
 - 공통 필드:
   - 속도 (int) velocity
@@ -14,6 +16,7 @@
   - setMode(boolean isOn) → 차량별 부과 기능 on/off
 */
 public abstract class Car {
+    public static final int HOUR_TO_MINUTE_CONVERT_FACTOR = 60;
     protected int velocity; // 속도
     protected int fuelEfficiency; // 연비
     protected int fuelCapacity; // 연료탱크 크기
@@ -53,21 +56,12 @@ public abstract class Car {
     }
 
     public int totalTravelTime(int distance, int totalMovement, int weatherCondition) {
-        return (int) Math.ceil(((double) distance / velocity) * totalMovement * selectWeatherCondition(weatherCondition)* 60);
+        return (int) Math.ceil(((double) distance / velocity)
+                * totalMovement
+                * WeatherCondition.getSpeedFactorById(weatherCondition)
+                * HOUR_TO_MINUTE_CONVERT_FACTOR);
     }
 
-    private double selectWeatherCondition(int weatherCondition) {
-        switch (weatherCondition) {
-            case 1: // 맑음
-                return 1.0;
-            case 2: // 비
-                return 1.2;
-            case 3: // 눈
-                return 1.4;
-            default: // 예외
-                return -1.0;
-        }
-    }
 
     public abstract void setMode(boolean isOn); // 차량별 부과 기능 on/off
 }
