@@ -17,12 +17,12 @@ public class CarMain {
 
         Car car = selectCarImpl(result.carType(), result.isModeOn());
 
-        int totalMovement = car.totalMovement(result.passengers());
-        int totalDistance = car.totalDistance(result.destination(), totalMovement);
-        double totalFuel = car.totalFuel(totalDistance);
+        int totalMovement = car.totalMovement(inputDTO.passengers());
+        int totalDistance = car.totalDistance(inputDTO.destination(), totalMovement);
+        int totalFuel = car.totalFuel(totalDistance);
         int totalRefuel = car.countRefuel(totalFuel);
         int totalCost = car.totalCost(totalFuel);
-        int totalTravelTime = car.totalTravelTime(result.destination(), totalMovement, result.weatherCondition());
+        int totalTravelTime = car.totalTravelTime(inputDTO.destination(), totalMovement, inputDTO.weatherCondition());
 
         outputView.printResult(car.name, totalCost, totalRefuel, totalTravelTime);
     }
