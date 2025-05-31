@@ -27,6 +27,13 @@ public class CarMain {
         outputView.printResult(car.getName(), totalCost, totalRefuel, totalTravelTime);
     }
 
+    /**
+     * 차량 선택 및 모드 설정을 처리하는 메서드
+     *
+     * @param carType 차량 종류 (1: 스포츠카, 2: 승용차, 3: 버스)
+     * @param isModeOn 모드 상태 (true: ON, false: OFF)
+     * @return 선택된 차량 객체
+     */
     private static Car selectCarImpl(int carType, boolean isModeOn) {
         Car car;
         switch (carType) {

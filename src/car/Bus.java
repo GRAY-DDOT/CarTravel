@@ -34,6 +34,11 @@ public class Bus extends Car implements Aircon, AutoDrive {
         this.name = name;
     }
 
+    /**
+     * 모드 설정 메소드
+     *
+     * @param isOn 모드 상태 (on/off)
+     */
     @Override
     public void setMode(boolean isOn) {
         if (isOn) fuelCapacity += 30;
@@ -41,6 +46,11 @@ public class Bus extends Car implements Aircon, AutoDrive {
     }
 
 
+    /**
+     * 버스의 현재 속도를 반환하는 메소드
+     *
+     * @return 현재 속도
+     */
     @Override
     public void airconOn(boolean isOn) {
         if (isOn) {
@@ -50,6 +60,11 @@ public class Bus extends Car implements Aircon, AutoDrive {
         }
     }
 
+    /**
+     * 자율주행 모드 설정 메소드
+     *
+     * @param isOn 자율주행 모드 상태 (on/off)
+     */
     @Override
     public void autoDriveOn(boolean isOn) {
         if (isOn) System.out.println(this.name + ": 자율주행 ON");

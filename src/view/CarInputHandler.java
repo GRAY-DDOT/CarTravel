@@ -2,6 +2,7 @@
 package view;
 
 import constansts.Destination;
+
 import static constansts.InputViewMessage.*;
 
 public class CarInputHandler {
@@ -11,6 +12,11 @@ public class CarInputHandler {
         this.inputView = inputView;
     }
 
+    /**
+     * 자동차 처리를 위해 필요한 입력값을 수집
+     *
+     * @return CarInputDTO
+     */
     public CarInputDTO collectInput() {
         int destination = Destination.getDistanceById(inputView.getInt(INPUT_DESTINATION_MSG));
         int passengers = inputView.getInt(INPUT_PASSENGERS_MSG);

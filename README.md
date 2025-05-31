@@ -1,5 +1,29 @@
 # 실습 문제
 
+## 프로젝트 구조
+
+```text
+src/
+├── car/
+│   ├── Car.java           # 차량의 공통 속성과 기능을 가진 추상 클래스
+│   ├── SportsCar.java     # 스포츠카 구현체
+│   ├── Sedan.java         # 승용차 구현체
+│   └── Bus.java           # 버스 구현체
+│
+├── constansts/
+│   ├── InputViewMessage.java   # 입력 메시지 상수
+│   ├── Destination.java        # 목적지 및 거리 상수
+│   └── WeatherCondition.java   # 날씨 조건 및 속도 보정 상수
+│
+├── view/
+│   ├── InputView.java      # 사용자 입력 처리
+│   ├── OutputView.java     # 결과 출력 처리
+│   ├── CarInputDTO.java    # 입력값 전달용 DTO (레코드)
+│   └── CarInputHandler.java# 입력 수집 및 유효성 검사, DTO 생성
+│
+└── CarMain.java            # 메인 실행 클래스
+```
+
 ---
 
 ## 시나리오

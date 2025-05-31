@@ -8,6 +8,12 @@ public enum WeatherCondition {
     private final int id;
     private final double speedFactor;
 
+    /**
+     * WeatherCondition 생성자
+     *
+     * @param id
+     * @param speedFactor
+     */
     WeatherCondition(int id, double speedFactor) {
         this.id = id;
         this.speedFactor = speedFactor;
@@ -17,6 +23,12 @@ public enum WeatherCondition {
         return id;
     }
 
+    /**
+     * 날씨 조건 ID에 해당하는 속도 계수를 반환
+     *
+     * @param id
+     * @return
+     */
     public static double getSpeedFactorById(int id) {
         for (WeatherCondition condition : WeatherCondition.values()) {
             if (condition.id == id) {
