@@ -9,13 +9,9 @@ public class CarMain {
         InputView inputView = new InputView();
         OutputView outputView = new OutputView();
 
-        int destination = Destination.getDistanceById(inputView.getInt(INPUT_DESTINATION));
-        int passengers = inputView.getInt(INPUT_PASSENGERS);
-        int carType = inputView.getInt(INPUT_CAR_TYPE);
-        boolean isModeOn = inputView.getBoolean(INPUT_MODE);
-        int weatherCondition = inputView.getInt(INPUT_WEATHER_CONDITION);
+        CarInputDTO inputDTO = getCarInputDTO(inputView);
 
-        Car car = selectCarImpl(result.carType(), result.isModeOn());
+        Car car = selectCarImpl(inputDTO.carType(), inputDTO.isModeOn());
 
         int totalMovement = car.totalMovement(inputDTO.passengers());
         int totalDistance = car.totalDistance(inputDTO.destination(), totalMovement);
@@ -25,6 +21,17 @@ public class CarMain {
         int totalTravelTime = car.totalTravelTime(inputDTO.destination(), totalMovement, inputDTO.weatherCondition());
 
         outputView.printResult(car.name, totalCost, totalRefuel, totalTravelTime);
+    }
+
+    private static CarInputDTO getCarInputDTO(InputView inputView) {
+        int destination = Destination.getDistanceById(inputView.getInt(INPUT_DESTINATION_MSG));
+        int passengers = inputView.getInt(INPUT_PASSENGERS_MSG);
+        int carType = inputView.getInt(INPUT_CAR_TYPE_MSG);
+        boolean isModeOn = inputView.getBoolean(INPUT_MODE_MSG);
+        int weatherCondition = inputView.getInt(INPUT_WEATHER_CONDITION_MSG);
+
+        CarInputDTO result = new CarInputDTO(destination, passengers, carType, isModeOn, weatherCondition);
+        return result;
     }
 
 
