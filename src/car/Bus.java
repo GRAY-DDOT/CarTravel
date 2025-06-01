@@ -4,7 +4,6 @@ import mode.Aircon;
 import mode.AutoDrive;
 
 public class Bus extends Car implements Aircon, AutoDrive {
-//    OutputView outputView = new OutputView();
 
     int region, passenger, weather;
 
@@ -23,8 +22,8 @@ public class Bus extends Car implements Aircon, AutoDrive {
 
     // 버스 속성값 정의
     private static int velocity = 150;    //속도
-    private static int fuelEfficiency = 12;  //연비
-    private static int fuelCapacity = 45;    //
+    private static int fuelEfficiency = 5;  //연비
+    private static int fuelCapacity = 100;    //
     private static int seatsNumber = 20;
 
     //    public car.Car(int velocity, int fuelEfficiency, int fuelCapacity, int seatsNumber) {
@@ -70,19 +69,4 @@ public class Bus extends Car implements Aircon, AutoDrive {
         if (isOn) System.out.println(this.name + ": 자율주행 ON");
         else System.out.println(this.name + ": 자율주행 OFF");
     }
-
-
-//    void viewBus(){
-//        int tMovement = totalMovement(passenger);
-//
-//        outputView.printResult(name, car.Bus.totalCost, totalRefuel, totalTravelTime);
-//        //String carName,int totalCost, int totalRefuel, double totalTravelTime
-//    }
-
-
-//    void viewBus(){
-//        System.out.println("총 비용 : ");
-//        System.out.println("총 주유 횟수 : " );
-//        System.out.println("총 이동시간 : " );
-//    }
 }
